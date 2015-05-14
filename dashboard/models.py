@@ -147,8 +147,8 @@ class DataPoint(BaseModel):
             return {'error': ValueError('Incorrect date format'), 'name': self.name}
         except ArithmeticError:
             return {'error': ArithmeticError('Incorrect calculation'), 'name': self.name}
-        # except Exception:
-        #     return {'error': 'Configuration error', 'name': self.name}
+        except Exception:
+            return {'error': 'Configuration error', 'name': self.name}
 
     def display_summary(self, token):
         try:
