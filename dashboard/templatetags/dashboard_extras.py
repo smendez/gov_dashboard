@@ -1,6 +1,7 @@
 from django import template
 
-from dashboard.models import Category, EmbeddedVisualization
+from ..models import Category, EmbeddedVisualization
+
 
 register = template.Library()
 
