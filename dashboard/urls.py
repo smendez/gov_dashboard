@@ -1,11 +1,20 @@
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 
-urlpatterns = patterns('dashboard.views',
-                       url(r'^$', 'home_view', (), 'home'),
-                       url(r'^category/(?P<slug>[\w-]+)/$', 'category_view', (), 'category'),
-                       url(r'^category_visualizations/(?P<slug>[\w-]+)/$', 'category_visualization_view', (),
-                           'embedded_viz_list'),
-                       url(r'^visualization/(?P<slug>[\w-]+)/$', 'visualization_view', (), 'embedded_viz'),
-                       url(r'^authorize/$', 'socrata_authorize_view', (), 'authorize'),
-                       url(r'^callback/$', 'socrata_callback_view', (), 'callback'),
-                       )
+from . import views
+
+
+urlpatterns = [
+    url(r'^$', views.home_view, (), 'home'),
+    url(r'^category/(?P<slug>[\w-]+)/$', views.category_view, name='category'),
+
+    url(r'^category_visualizations/(?P<slug>[\w-]+)/$',
+        views.category_visualization_view,
+        name='embedded_viz_list'),
+
+    url(r'^visualization/(?P<slug>[\w-]+)/$',
+        views.visualization_view,
+        name='embedded_viz'),
+
+    url(r'^authorize/$', views.socrata_authorize_view, name='authorize'),
+    url(r'^callback/$', views.socrata_callback_view, name='callback'),
+]

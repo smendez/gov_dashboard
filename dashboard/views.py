@@ -1,3 +1,6 @@
+import logging
+
+from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.contrib import messages
 from django.http import Http404
@@ -8,10 +11,6 @@ from requests_oauthlib import OAuth2Session
 from oauthlib.oauth2.rfc6749.errors import MissingTokenError
 
 from .models import Category, DataPoint, EmbeddedVisualization
-
-from dashboard_gobernacion.settings import CLIENT_ID, CLIENT_SECRET, AUTHORIZE_URL, TOKEN_URL
-
-import logging
 
 
 class SocrataAccessError(Exception):
@@ -127,8 +126,8 @@ def visualization_view(request, slug):
 def socrata_authorize_view(request):
     redirect_uri = request.build_absolute_uri(reverse('callback'))
 
-    oauth = OAuth2Session(CLIENT_ID, redirect_uri=redirect_uri)
-    authorization_url, state = oauth.authorization_url(AUTHORIZE_URL)
+    oauth = OAuth2Session(settings.CLIENT_ID, redirect_uri=redirect_uri)
+    authorization_url, state = oauth.authorization_url(settings.AUTHORIZE_URL)
 
     return redirect(authorization_url)
 
@@ -140,10 +139,10 @@ def socrata_callback_view(request):
     if not code:
         raise Http404
 
-    oauth2 = OAuth2Session(CLIENT_ID, state=state)
+    oauth2 = OAuth2Session(settings.CLIENT_ID, state=state)
 
     try:
-        token = oauth2.fetch_token(token_url=TOKEN_URL, client_secret=CLIENT_SECRET, code=code)
+        token = oauth2.fetch_token(token_url=settings.TOKEN_URL, client_secret=settings.CLIENT_SECRET, code=code)
         request.session['token'] = token
     except MissingTokenError:
         return redirect('authorize')

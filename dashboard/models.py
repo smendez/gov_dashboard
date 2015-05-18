@@ -77,7 +77,7 @@ class DataPoint(BaseModel):
                 (latest_month['date'].year == previous_month['date'].year):
             return previous_month
         else:
-            return None
+            return latest_month
 
     @staticmethod
     def check_month_last_year(latest_month, month_last_year):
@@ -85,7 +85,7 @@ class DataPoint(BaseModel):
                 ((latest_month['date'].year-1) == month_last_year['date'].year):
             return month_last_year
         else:
-            return None
+            return latest_month
 
     @staticmethod
     def check_percent_change(latest_month, month_last_year):
@@ -103,6 +103,7 @@ class DataPoint(BaseModel):
             headers = {"content-type": "application/json", "Authorization": "OAuth " + token['access_token']}
 
             r = requests.get(data_request, headers=headers)
+
             r.raise_for_status()
 
             return r
@@ -116,10 +117,20 @@ class DataPoint(BaseModel):
         try:
 
             data_request = self.get_data(token)
+            data_set = []
 
-            data_set = [{'date': datetime.strptime(x[self.date_field][:10], '%Y-%m-%d'),
-                         'value': x[self.data_field]} for x in data_request.json()]
+            for x in data_request.json():
+                value = x.get(self.data_field)
+                date = datetime.strptime(x[self.date_field][:10], '%Y-%m-%d')
+
+                if value is not None:
+                    data_set.append({
+                        'date': date,
+                        'value': value
+                    })
+
             latest_month = data_set[0]
+
             previous_month = self.check_previous_month(latest_month, data_set[1])
             month_last_year = self.check_month_last_year(latest_month, data_set[-1])
             percent_change = self.check_percent_change(float(latest_month['value']), float(month_last_year['value']))
@@ -143,10 +154,20 @@ class DataPoint(BaseModel):
         try:
 
             data_request = self.get_data(token)
+            data_set = []
 
-            data_set = [{'date': datetime.strptime(x[self.date_field][:10], '%Y-%m-%d'),
-                         'value': x[self.data_field]} for x in data_request.json()]
+            for x in data_request.json():
+                value = x.get(self.data_field)
+                date = datetime.strptime(x[self.date_field][:10], '%Y-%m-%d')
+
+                if value is not None:
+                    data_set.append({
+                        'date': date,
+                        'value': value
+                    })
+
             latest_month = data_set[0]
+
             month_last_year = self.check_month_last_year(latest_month, data_set[-1])
             percent_change = self.check_percent_change(float(latest_month['value']), float(month_last_year['value']))
             # Trend direction - If going up, is True. If going down, is False.
