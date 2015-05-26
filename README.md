@@ -20,3 +20,12 @@ In the Dashboard, your app token will be CLIENT_ID and your secret token will be
 * TOKEN_URL=https://data.pr.gov/oauth/access_token
 
 These all will have to be set as enviromental variables when deploying to Heroku.
+
+## Sample data
+In your project directory, run the following command to load sample data into your dashboard:
+
+```
+./manage.py loaddata dashboard/fixtures/dashboard_sample_data.json
+```
+
+
