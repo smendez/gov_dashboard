@@ -1,0 +1,203 @@
+[
+    {
+        "model": "dashboard.category",
+        "fields": {
+            "date_disabled": null,
+            "slug": "transportacion",
+            "date_created": "2015-05-26T04:55:23.211Z",
+            "enabled": true,
+            "name": "Transportaci\u00f3n",
+            "color": "#e6ee9c",
+            "icon": "images/traffic-light.svg"
+        },
+        "pk": 1
+    },
+    {
+        "model": "dashboard.category",
+        "fields": {
+            "date_disabled": null,
+            "slug": "salud",
+            "date_created": "2015-05-26T04:55:52.290Z",
+            "enabled": true,
+            "name": "Salud",
+            "color": "#ef9a9a",
+            "icon": "images/hospital.svg"
+        },
+        "pk": 2
+    },
+    {
+        "model": "dashboard.category",
+        "fields": {
+            "date_disabled": null,
+            "slug": "negocios-y-corporaciones",
+            "date_created": "2015-05-26T04:56:18.392Z",
+            "enabled": true,
+            "name": "Negocios y Corporaciones",
+            "color": "#ffab91",
+            "icon": "images/wallet-travel.svg"
+        },
+        "pk": 3
+    },
+    {
+        "model": "dashboard.category",
+        "fields": {
+            "date_disabled": null,
+            "slug": "desarrollo-e-infraestructura",
+            "date_created": "2015-05-26T04:56:50.427Z",
+            "enabled": true,
+            "name": "Desarrollo e Infraestructura",
+            "color": "#80cbc4",
+            "icon": "images/lightbulb.svg"
+        },
+        "pk": 4
+    },
+    {
+        "model": "dashboard.category",
+        "fields": {
+            "date_disabled": null,
+            "slug": "economia-y-finanzas",
+            "date_created": "2015-05-26T04:57:14.029Z",
+            "enabled": true,
+            "name": "Econom\u00eda y Finanzas",
+            "color": "#c5e1a5",
+            "icon": "images/cash.svg"
+        },
+        "pk": 5
+    },
+    {
+        "model": "dashboard.datapoint",
+        "fields": {
+            "date_disabled": null,
+            "slug": "empleo-total-pr-promedio-natural",
+            "date_created": "2015-05-26T04:59:44.710Z",
+            "date_field": "a_o",
+            "category": 5,
+            "enabled": true,
+            "name": "Empleo total PR - Promedio Natural",
+            "trend_upwards_positive": true,
+            "data_field": "promedio_natural",
+            "resource": "http://data.pr.gov/resource/xign-r7yz.json",
+            "featured": true
+        },
+        "pk": 2
+    },
+    {
+        "model": "dashboard.datapoint",
+        "fields": {
+            "date_disabled": null,
+            "slug": "demanda-de-energia",
+            "date_created": "2015-05-26T05:00:14.599Z",
+            "date_field": "fecha",
+            "category": 4,
+            "enabled": true,
+            "name": "Demanda de energ\u00eda",
+            "trend_upwards_positive": true,
+            "data_field": "demanda_maxima",
+            "resource": "http://data.pr.gov/resource/mt8n-mwk8.json",
+            "featured": true
+        },
+        "pk": 3
+    },
+    {
+        "model": "dashboard.datapoint",
+        "fields": {
+            "date_disabled": null,
+            "slug": "corporaciones-nuevas-creadas-non-profit",
+            "date_created": "2015-05-26T05:00:42.498Z",
+            "date_field": "month_year",
+            "category": 3,
+            "enabled": true,
+            "name": "Corporaciones Nuevas Creadas - Non Profit",
+            "trend_upwards_positive": true,
+            "data_field": "non_profit",
+            "resource": "http://data.pr.gov/resource/w72k-q5cj.json",
+            "featured": true
+        },
+        "pk": 4
+    },
+    {
+        "model": "dashboard.datapoint",
+        "fields": {
+            "date_disabled": null,
+            "slug": "corporaciones-nuevas-creadas-profit",
+            "date_created": "2015-05-26T05:01:05.104Z",
+            "date_field": "month_year",
+            "category": 3,
+            "enabled": true,
+            "name": "Corporaciones Nuevas Creadas - For Profit",
+            "trend_upwards_positive": true,
+            "data_field": "for_profit",
+            "resource": "http://data.pr.gov/resource/w72k-q5cj.json",
+            "featured": true
+        },
+        "pk": 5
+    },
+    {
+        "model": "dashboard.datapoint",
+        "fields": {
+            "date_disabled": null,
+            "slug": "generacion-neta",
+            "date_created": "2015-05-26T05:01:33.125Z",
+            "date_field": "fecha",
+            "category": 4,
+            "enabled": true,
+            "name": "Generaci\u00f3n Neta",
+            "trend_upwards_positive": true,
+            "data_field": "generacion_neta",
+            "resource": "http://data.pr.gov/resource/mt8n-mwk8.json",
+            "featured": true
+        },
+        "pk": 6
+    },
+    {
+        "model": "dashboard.datapoint",
+        "fields": {
+            "date_disabled": null,
+            "slug": "generacion-bruta",
+            "date_created": "2015-05-26T05:02:00.015Z",
+            "date_field": "fecha",
+            "category": 4,
+            "enabled": true,
+            "name": "Generaci\u00f3n Bruta",
+            "trend_upwards_positive": true,
+            "data_field": "generacion_bruta",
+            "resource": "http://data.pr.gov/resource/mt8n-mwk8.json",
+            "featured": true
+        },
+        "pk": 7
+    },
+    {
+        "model": "dashboard.datapoint",
+        "fields": {
+            "date_disabled": null,
+            "slug": "produccion-de-cemento",
+            "date_created": "2015-05-26T05:02:24.143Z",
+            "date_field": "mes",
+            "category": 4,
+            "enabled": true,
+            "name": "Producci\u00f3n de Cemento",
+            "trend_upwards_positive": true,
+            "data_field": "produccion_94_lb_sacos_miles",
+            "resource": "http://data.pr.gov/resource/e99k-59b6.json",
+            "featured": true
+        },
+        "pk": 8
+    },
+    {
+        "model": "dashboard.datapoint",
+        "fields": {
+            "date_disabled": null,
+            "slug": "ventas-de-cemento",
+            "date_created": "2015-05-26T05:02:55.497Z",
+            "date_field": "mes",
+            "category": 5,
+            "enabled": true,
+            "name": "Ventas de cemento",
+            "trend_upwards_positive": true,
+            "data_field": "venta_94_lb_sacos_miles",
+            "resource": "http://data.pr.gov/resource/e99k-59b6.json",
+            "featured": true
+        },
+        "pk": 9
+    }
+]
