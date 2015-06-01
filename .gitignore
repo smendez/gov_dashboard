@@ -52,7 +52,7 @@ logs_log.txt
 
 # Sphinx documentation
 docs/_build/
-docs/site/
+site/
 
 # PyBuilder
 target/

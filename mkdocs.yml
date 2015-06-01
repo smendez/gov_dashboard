@@ -1,0 +1,7 @@
+site_name: Gov Dashboard
+site_description: Companion tool for data.pr.gov
+repo_url: https://github.com/smendez/gov_dashboard
+
+pages:
+- Home: 'index.md'
+
