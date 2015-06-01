@@ -1,4 +1,5 @@
 site_name: Gov Dashboard
 
 pages:
-- ['index.md', 'Home']
+- Home: 'index.md'
+
